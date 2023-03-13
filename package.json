@@ -1,0 +1,43 @@
+{
+	"name": "ink-spoiler",
+	"version": "1.0.0",
+	"description": "Simple JS Library for spoiler",
+	"main": "src/ink-spoiler.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/inkShio/ink-spoiler"
+	},
+	"scripts": {
+		"build": "webpack",
+		"dev": "webpack --mode development"
+	},
+	"keywords": [
+		"share",
+		"js",
+		"css",
+		"scss",
+		"html"
+	],
+	"author": "inkShio",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/inkShio/ink-spoiler/issues"
+	},
+	"homepage": "https://github.com/inkShio/ink-spoiler#readme",
+	"devDependencies": {
+		"@babel/core": "^7.20.7",
+		"@babel/plugin-transform-object-assign": "^7.18.6",
+		"@babel/preset-env": "^7.20.2",
+		"babel-loader": "^9.1.0",
+		"css-loader": "^6.7.3",
+		"file-loader": "^6.2.0",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1",
+		"mini-css-extract-plugin": "^2.7.2",
+		"css-minimizer-webpack-plugin": "^4.2.2",
+		"style-loader": "^3.3.1"
+	},
+	"browserslist": [
+		"defaults"
+	]
+}

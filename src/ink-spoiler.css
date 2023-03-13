@@ -1,0 +1,9 @@
+.spoiler { }
+
+.spoiler__panel {
+	cursor: pointer;
+}
+
+.spoiler__content:not(.spoiler__content_show) {
+  display: none;
+}
