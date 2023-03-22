@@ -5,20 +5,26 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>InkSpoiler demo</title>
+	<title>InkSpoiler demo1</title>
+	<link rel="stylesheet" href="../dist/ink-spoiler.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="../dist/ink-spoiler.min.css">
 </head>
 
 <body>
 	<div class="container py-4">
 		<h1 class="mb-4">InkSpoiler Demo</h1>
-
 		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Стандарт</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide">
@@ -34,7 +40,14 @@
 		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Открытый спойлер</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;show&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="show">
@@ -42,7 +55,7 @@
 						<div class="spoiler__text">Спойлер</div>
 					</strong>
 				</div>
-				<div class="spoiler__content spoiler__content_show border-bottom">
+				<div class="spoiler__content border-bottom">
 					<div class="p-4">Контент</div>
 				</div>
 			</div>
@@ -50,7 +63,20 @@
 		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Замена текста</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-text=&quot;Закрыть 1&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Открыть 1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;show&quot; data-spoiler-text=&quot;Закрыть 2&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Открыть 2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide"
@@ -78,7 +104,14 @@
 		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Свой ID</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-target=&quot;#my-custom-id&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide"
@@ -95,7 +128,22 @@
 		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Вложенный спойлер</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер 1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;
+    Контент
+    &lt;div class=&quot;spoiler&quot;&gt;
+      &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot;&gt;
+        &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер 2&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide">
@@ -121,9 +169,28 @@
 			</div>
 		</div>
 		<div class="border p-4 mb-4">
-			<h2 class="mb-4">Аккардион</h2>
+			<h2 class="mb-4">Аккордеон</h2>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;show&quot; data-spoiler-group=&quot;A&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа A&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;A&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа A&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;A&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа A&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="mb-4">
 				<div class="spoiler border-top border-end border-start">
@@ -158,7 +225,26 @@
 				</div>
 			</div>
 			<div class="border p-4 mb-4">
-				<pre class="my-0"><code></code></pre>
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;B&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа B&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;B&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа B&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;B&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Группа B&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
 			</div>
 			<div class="spoiler border-top border-end border-start">
 				<div class="spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide" data-spoiler-group="B">
@@ -191,12 +277,12 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 	<script src="../dist/ink-spoiler.min.js"></script>
 	<script>
-		const spoiler1 = new InkSpoiler('.js-spoiler');
+		document.addEventListener('DOMContentLoaded', function () {
+			const spoilers = new InkSpoiler('.js-spoiler');
+		});
 	</script>
 </body>
 

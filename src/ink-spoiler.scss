@@ -1,0 +1,17 @@
+$is-default-content-class: 'show';
+// $is-active-content-class: 'test';
+
+@if global-variable-exists(is-active-content-class) {
+	$is-default-content-class: $is-active-content-class;
+}
+
+.spoiler {
+	&__panel {
+		cursor: pointer;
+		user-select: none;
+	}
+
+	&__content:not(.#{$is-default-content-class}) {
+		display: none;
+	}
+}

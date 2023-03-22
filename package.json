@@ -1,7 +1,7 @@
 {
 	"name": "ink-spoiler",
-	"version": "1.0.0",
-	"description": "Simple JS Library for spoiler",
+	"version": "1.0.1",
+	"description": "Simple JS Library for spoiler and accordion",
 	"main": "src/ink-spoiler.js",
 	"repository": {
 		"type": "git",
@@ -12,7 +12,8 @@
 		"dev": "webpack --mode development"
 	},
 	"keywords": [
-		"share",
+		"spoiler",
+		"accordion",
 		"js",
 		"css",
 		"scss",
@@ -25,19 +26,26 @@
 	},
 	"homepage": "https://github.com/inkShio/ink-spoiler#readme",
 	"devDependencies": {
-		"@babel/core": "^7.20.7",
+		"@babel/core": "^7.21.3",
 		"@babel/plugin-transform-object-assign": "^7.18.6",
 		"@babel/preset-env": "^7.20.2",
-		"babel-loader": "^9.1.0",
+		"babel-loader": "^9.1.2",
 		"css-loader": "^6.7.3",
 		"file-loader": "^6.2.0",
-		"webpack": "^5.75.0",
+		"webpack": "^5.76.2",
 		"webpack-cli": "^5.0.1",
-		"mini-css-extract-plugin": "^2.7.2",
+		"mini-css-extract-plugin": "^2.7.5",
+		"postcss": "^8.4.21",
+		"postcss-loader": "^7.1.0",
+		"postcss-preset-env": "^8.0.1",
+		"sass": "^1.59.3",
+		"sass-loader": "^13.2.1",
 		"css-minimizer-webpack-plugin": "^4.2.2",
-		"style-loader": "^3.3.1"
+		"style-loader": "^3.3.2"
 	},
 	"browserslist": [
-		"defaults"
+		">0.2%",
+		"not dead",
+		"not op_mini all"
 	]
 }
