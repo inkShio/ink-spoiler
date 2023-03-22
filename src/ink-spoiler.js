@@ -5,6 +5,7 @@ export default class InkSpoiler {
 		if (this.spoilers) {
 			this.spoilers.forEach((el, i) => {
 				let defaultOptions = {
+					activeContentClass: 'show',
 					animation: true,
 					duration: 350
 				};
@@ -37,7 +38,7 @@ export default class InkSpoiler {
 		el.addEventListener('click', () => {
 			const content = document.querySelector(el.dataset.spoilerTarget);
 
-			if (this.options.animation && content.classList.contains('spoiler__content_animation')) return;
+			if (this.options.animation && content.classList.contains('animation')) return;
 
 			const isExpanded = el.dataset.spoilerState == 'hide' ? true : false;
 			const isGroup = el.getAttribute('data-spoiler-group');
@@ -56,7 +57,7 @@ export default class InkSpoiler {
 
 						if (this.options.animation) {
 							group.dataset.spoilerState = 'hide';
-							content.classList.add('spoiler__content_animation');
+							content.classList.add('animation');
 							content.style.height = `${content.offsetHeight}px`;
 							content.offsetHeight;
 							content.style.height = 0;
@@ -67,12 +68,12 @@ export default class InkSpoiler {
 								content.style.height = '';
 								content.style.transition = '';
 								content.style.overflow = '';
-								content.classList.remove('spoiler__content_show');
-								content.classList.remove('spoiler__content_animation');
+								content.classList.remove(this.options.activeContentClass);
+								content.classList.remove('animation');
 							}, this.options.duration);
 						} else {
 							group.dataset.spoilerState = 'hide';
-							content.classList.remove('spoiler__content_show');
+							content.classList.remove(this.options.activeContentClass);
 						}
 					}
 				});
@@ -96,11 +97,11 @@ export default class InkSpoiler {
 		const content = document.querySelector(el.dataset.spoilerTarget);
 
 		if (el.dataset.spoilerState == 'show') {
-			if (!content.hasAttribute('spoiler__content_show')) {
+			if (!content.hasAttribute(this.options.activeContentClass)) {
 				if (this.options.animation) {
-					if (content.classList.contains('spoiler__content_animation')) return;
-					content.classList.add('spoiler__content_show');
-					content.classList.add('spoiler__content_animation');
+					if (content.classList.contains('animation')) return;
+					content.classList.add(this.options.activeContentClass);
+					content.classList.add('animation');
 					const height = content.offsetHeight;
 					content.style.height = 0;
 					content.style.overflow = 'hidden';
@@ -112,17 +113,17 @@ export default class InkSpoiler {
 						content.style.height = '';
 						content.style.transition = '';
 						content.style.overflow = '';
-						content.classList.remove('spoiler__content_animation');
+						content.classList.remove('animation');
 					}, this.options.duration);
 				} else {
-					content.classList.add('spoiler__content_show');
+					content.classList.add(this.options.activeContentClass);
 				}
 			}
 		} else {
 			if (this.options.animation) {
-				if (content.classList.contains('spoiler__content_animation')) return;
+				if (content.classList.contains('animation')) return;
 
-				content.classList.add('spoiler__content_animation');
+				content.classList.add('animation');
 				content.style.height = `${content.offsetHeight}px`;
 				content.offsetHeight;
 				content.style.height = 0;
@@ -133,11 +134,11 @@ export default class InkSpoiler {
 					content.style.height = '';
 					content.style.transition = '';
 					content.style.overflow = '';
-					content.classList.remove('spoiler__content_show');
-					content.classList.remove('spoiler__content_animation');
+					content.classList.remove(this.options.activeContentClass);
+					content.classList.remove('animation');
 				}, this.options.duration);
 			} else {
-				content.classList.remove('spoiler__content_show');
+				content.classList.remove(this.options.activeContentClass);
 			}
 		}
 	}
