@@ -1,5 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const Path = require('path');
 
 module.exports = {
 	mode: 'production',
@@ -15,7 +17,15 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: 'ink-spoiler.min.css'
-		})
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: Path.join(__dirname, 'dist'),
+					to: Path.join(__dirname, 'docs')
+				}
+			],
+		}),
 	],
 	module: {
 		rules: [
