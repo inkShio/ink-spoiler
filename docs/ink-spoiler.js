@@ -35,13 +35,14 @@ var InkSpoiler = /*#__PURE__*/function () {
       this.spoilers.forEach(function (el, i) {
         var defaultOptions = {
           activeContentClass: 'show',
+          a11y: true,
           animation: true,
           duration: 350
         };
         _this.options = Object.assign(defaultOptions, options);
         _this.panel = el;
         _this.panelState = _this.panel.dataset.spoilerState;
-        _this.panelId = 'inkspoiler-' + (i + 1);
+        _this.panelId = "inkspoiler-".concat(Math.random().toString(16).slice(2));
         _this.box = _this.panel.closest('.spoiler');
         _this.content = _this.box.querySelector('.spoiler__content');
         _this.init();
@@ -57,6 +58,11 @@ var InkSpoiler = /*#__PURE__*/function () {
       } else {
         this.panel.dataset.spoilerTarget = '#' + this.panelId;
         this.content.id = this.panelId;
+      }
+      if (this.options.a11y) {
+        this.panel.setAttribute('role', 'button');
+        this.panel.setAttribute('aria-expanded', this.panelState == 'show' ? true : false);
+        this.panel.setAttribute('aria-controls', this.content.id);
       }
       this.switchPanel(this.panel);
       this.switchText(this.panel, true);
@@ -96,6 +102,7 @@ var InkSpoiler = /*#__PURE__*/function () {
                 group.dataset.spoilerState = 'hide';
                 _content.classList.remove(_this2.options.activeContentClass);
               }
+              if (_this2.options.a11y) group.setAttribute('aria-expanded', false);
             }
           });
         }
@@ -138,6 +145,7 @@ var InkSpoiler = /*#__PURE__*/function () {
           } else {
             content.classList.add(this.options.activeContentClass);
           }
+          if (this.options.a11y) el.setAttribute('aria-expanded', true);
         }
       } else {
         if (this.options.animation) {
@@ -158,6 +166,7 @@ var InkSpoiler = /*#__PURE__*/function () {
         } else {
           content.classList.remove(this.options.activeContentClass);
         }
+        if (this.options.a11y) el.setAttribute('aria-expanded', false);
       }
     }
   }]);

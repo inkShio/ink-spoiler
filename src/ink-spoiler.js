@@ -6,13 +6,14 @@ export default class InkSpoiler {
 			this.spoilers.forEach((el, i) => {
 				let defaultOptions = {
 					activeContentClass: 'show',
+					a11y: true,
 					animation: true,
 					duration: 350
 				};
 				this.options = Object.assign(defaultOptions, options);
 				this.panel = el;
 				this.panelState = this.panel.dataset.spoilerState;
-				this.panelId = 'inkspoiler-' + (i + 1);
+				this.panelId = `inkspoiler-${Math.random().toString(16).slice(2)}`;
 				this.box = this.panel.closest('.spoiler');
 				this.content = this.box.querySelector('.spoiler__content');
 
@@ -28,6 +29,12 @@ export default class InkSpoiler {
 		} else {
 			this.panel.dataset.spoilerTarget = '#' + this.panelId;
 			this.content.id = this.panelId;
+		}
+
+		if (this.options.a11y) {
+			this.panel.setAttribute('role', 'button');
+			this.panel.setAttribute('aria-expanded', this.panelState == 'show' ? true : false);
+			this.panel.setAttribute('aria-controls', this.content.id);
 		}
 
 		this.switchPanel(this.panel);
@@ -75,6 +82,7 @@ export default class InkSpoiler {
 							group.dataset.spoilerState = 'hide';
 							content.classList.remove(this.options.activeContentClass);
 						}
+						if (this.options.a11y) group.setAttribute('aria-expanded', false);
 					}
 				});
 			}
@@ -118,6 +126,7 @@ export default class InkSpoiler {
 				} else {
 					content.classList.add(this.options.activeContentClass);
 				}
+				if (this.options.a11y) el.setAttribute('aria-expanded', true);
 			}
 		} else {
 			if (this.options.animation) {
@@ -140,6 +149,7 @@ export default class InkSpoiler {
 			} else {
 				content.classList.remove(this.options.activeContentClass);
 			}
+			if (this.options.a11y) el.setAttribute('aria-expanded', false);
 		}
 	}
 }

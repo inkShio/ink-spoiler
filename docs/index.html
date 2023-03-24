@@ -277,11 +277,41 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Отключение доступности (Accessibility)</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler-a11y&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="spoiler border-top border-end border-start">
+				<div class="spoiler__panel border-bottom p-4 js-spoiler-a11y" data-spoiler-state="hide">
+					<strong>
+						<div class="spoiler__text">Спойлер</div>
+					</strong>
+				</div>
+				<div class="spoiler__content border-bottom">
+					<div class="p-4">Контент</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<script src="ink-spoiler.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const spoilers = new InkSpoiler('.js-spoiler');
+
+			const spoilerA11y = new InkSpoiler('.js-spoiler-a11y', {
+				ally: false
+			});
+
 		});
 	</script>
 </body>
