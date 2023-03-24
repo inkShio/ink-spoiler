@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>InkSpoiler demo1</title>
+	<title>InkSpoiler demo</title>
 	<link rel="stylesheet" href="ink-spoiler.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -18,6 +18,12 @@
 			<h2 class="mb-4">Стандарт</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
@@ -41,6 +47,12 @@
 			<h2 class="mb-4">Открытый спойлер</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;show&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
@@ -64,6 +76,12 @@
 			<h2 class="mb-4">Замена текста</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-text=&quot;Закрыть 1&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Открыть 1&lt;/div&gt;
@@ -105,6 +123,12 @@
 			<h2 class="mb-4">Свой ID</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-target=&quot;#my-custom-id&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
@@ -129,6 +153,12 @@
 			<h2 class="mb-4">Вложенный спойлер</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер 1&lt;/div&gt;
@@ -172,6 +202,12 @@
 			<h2 class="mb-4">Аккордеон</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;show&quot; data-spoiler-group=&quot;A&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Группа A&lt;/div&gt;
@@ -226,6 +262,12 @@
 			</div>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler');
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler&quot; data-spoiler-state=&quot;hide&quot; data-spoiler-group=&quot;B&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Группа B&lt;/div&gt;
@@ -282,6 +324,14 @@
 			<h2 class="mb-4">Отключение доступности (Accessibility)</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler-a11y', {
+      ally: false
+    });
+  });
+&lt;/script&gt;
+
 &lt;div class=&quot;spoiler&quot;&gt;
   &lt;div class=&quot;spoiler__panel js-spoiler-a11y&quot; data-spoiler-state=&quot;hide&quot;&gt;
     &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
@@ -302,6 +352,70 @@
 			</div>
 		</div>
 
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Отключение анимации</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler-animation', {
+      animation: false
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler-animation&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="spoiler border-top border-end border-start">
+				<div class="spoiler__panel border-bottom p-4 js-spoiler-animation" data-spoiler-state="hide">
+					<strong>
+						<div class="spoiler__text">Спойлер</div>
+					</strong>
+				</div>
+				<div class="spoiler__content border-bottom">
+					<div class="p-4">Контент</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Продолжительность анимации</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilers = new InkSpoiler('.js-spoiler-duration', {
+      animation: true,
+      duration: 2000
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler-duration&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="spoiler border-top border-end border-start">
+				<div class="spoiler__panel border-bottom p-4 js-spoiler-duration" data-spoiler-state="hide">
+					<strong>
+						<div class="spoiler__text">Спойлер</div>
+					</strong>
+				</div>
+				<div class="spoiler__content border-bottom">
+					<div class="p-4">Контент</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="ink-spoiler.js"></script>
 	<script>
@@ -312,6 +426,14 @@
 				ally: false
 			});
 
+			const spoilerAnimation = new InkSpoiler('.js-spoiler-animation', {
+				animation: false
+			});
+
+			const spoilerDuration = new InkSpoiler('.js-spoiler-duration', {
+				animation: true,
+				duration: 2000
+			});
 		});
 	</script>
 </body>
