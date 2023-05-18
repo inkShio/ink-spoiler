@@ -37,7 +37,11 @@ var InkSpoiler = /*#__PURE__*/function () {
           activeContentClass: 'show',
           a11y: true,
           animation: true,
-          duration: 350
+          duration: 350,
+          changeBeforeOpening: function changeBeforeOpening() {},
+          changeAfterOpening: function changeAfterOpening() {},
+          changeBeforeClosing: function changeBeforeClosing() {},
+          changeAfterClosing: function changeAfterClosing() {}
         };
         _this.options = Object.assign(defaultOptions, options);
         _this.panel = el;
@@ -125,6 +129,7 @@ var InkSpoiler = /*#__PURE__*/function () {
       var _this3 = this;
       var content = document.querySelector(el.dataset.spoilerTarget);
       if (el.dataset.spoilerState == 'show') {
+        this.options.changeBeforeOpening(el.closest('.spoiler'));
         if (!content.hasAttribute(this.options.activeContentClass)) {
           if (this.options.animation) {
             if (content.classList.contains('animation')) return;
@@ -147,7 +152,9 @@ var InkSpoiler = /*#__PURE__*/function () {
           }
           if (this.options.a11y) el.setAttribute('aria-expanded', true);
         }
+        this.options.changeAfterOpening(el.closest('.spoiler'));
       } else {
+        this.options.changeBeforeClosing(el.closest('.spoiler'));
         if (this.options.animation) {
           if (content.classList.contains('animation')) return;
           content.classList.add('animation');
@@ -167,6 +174,7 @@ var InkSpoiler = /*#__PURE__*/function () {
           content.classList.remove(this.options.activeContentClass);
         }
         if (this.options.a11y) el.setAttribute('aria-expanded', false);
+        this.options.changeAfterClosing(el.closest('.spoiler'));
       }
     }
   }]);

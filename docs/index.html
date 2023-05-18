@@ -416,6 +416,60 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Событие</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilerEvents = new InkSpoiler('.js-spoiler-events', {
+      changeBeforeOpening: (spoilerEvents) => {
+        console.log('changeBeforeOpening');
+      },
+      changeAfterOpening: (spoilerEvents) => {
+        console.log('changeAfterOpening');
+      },
+      changeBeforeClosing: (spoilerEvents) => {
+        console.log('changeBeforeClosing');
+      },
+      changeAfterClosing: (spoilerEvents) => {
+        console.log('changeAfterClosing');
+      }
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class=&quot;spoiler&quot;&gt;
+  &lt;div class=&quot;spoiler__panel js-spoiler-events&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="spoiler border-top border-end border-start">
+				<div class="spoiler__panel border-bottom p-4 js-spoiler-events" data-spoiler-state="hide">
+					<strong>
+						<div class="spoiler__text">Спойлер</div>
+					</strong>
+				</div>
+				<div class="spoiler__content border-bottom">
+					<div class="p-4">Контент</div>
+				</div>
+			</div>
+
+			<div class="spoiler border-top border-end border-start">
+				<div class="spoiler__panel border-bottom p-4 js-spoiler-events" data-spoiler-state="hide">
+					<strong>
+						<div class="spoiler__text">Спойлер 1</div>
+					</strong>
+				</div>
+				<div class="spoiler__content border-bottom">
+					<div class="p-4">Контент 2</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="ink-spoiler.js"></script>
 	<script>
@@ -433,6 +487,20 @@
 			const spoilerDuration = new InkSpoiler('.js-spoiler-duration', {
 				animation: true,
 				duration: 2000
+			});
+			const spoilerEvents = new InkSpoiler('.js-spoiler-events', {
+				changeBeforeOpening: (spoilerEvents) => {
+					console.log('changeBeforeOpening');
+				},
+				changeAfterOpening: (spoilerEvents) => {
+					console.log('changeAfterOpening');
+				},
+				changeBeforeClosing: (spoilerEvents) => {
+					console.log('changeBeforeClosing');
+				},
+				changeAfterClosing: (spoilerEvents) => {
+					console.log('changeAfterClosing');
+				}
 			});
 		});
 	</script>

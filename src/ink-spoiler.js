@@ -8,7 +8,11 @@ export default class InkSpoiler {
 					activeContentClass: 'show',
 					a11y: true,
 					animation: true,
-					duration: 350
+					duration: 350,
+					changeBeforeOpening: () => { },
+					changeAfterOpening: () => { },
+					changeBeforeClosing: () => { },
+					changeAfterClosing: () => { }
 				};
 				this.options = Object.assign(defaultOptions, options);
 				this.panel = el;
@@ -105,6 +109,7 @@ export default class InkSpoiler {
 		const content = document.querySelector(el.dataset.spoilerTarget);
 
 		if (el.dataset.spoilerState == 'show') {
+			this.options.changeBeforeOpening(el.closest('.spoiler'));
 			if (!content.hasAttribute(this.options.activeContentClass)) {
 				if (this.options.animation) {
 					if (content.classList.contains('animation')) return;
@@ -128,7 +133,9 @@ export default class InkSpoiler {
 				}
 				if (this.options.a11y) el.setAttribute('aria-expanded', true);
 			}
+			this.options.changeAfterOpening(el.closest('.spoiler'));
 		} else {
+			this.options.changeBeforeClosing(el.closest('.spoiler'));
 			if (this.options.animation) {
 				if (content.classList.contains('animation')) return;
 
@@ -150,6 +157,7 @@ export default class InkSpoiler {
 				content.classList.remove(this.options.activeContentClass);
 			}
 			if (this.options.a11y) el.setAttribute('aria-expanded', false);
+			this.options.changeAfterClosing(el.closest('.spoiler'));
 		}
 	}
 }
