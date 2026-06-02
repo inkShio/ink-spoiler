@@ -1,17 +1,13 @@
-$is-default-content-class: 'show';
-// $is-active-content-class: 'test';
+$spoiler-container: 'ink-spoiler' !default;
+$spoiler-active: 'show' !default;
 
-@if global-variable-exists(is-active-content-class) {
-	$is-default-content-class: $is-active-content-class;
-}
-
-.spoiler {
+.#{$spoiler-container} {
 	&__panel {
 		cursor: pointer;
 		user-select: none;
 	}
 
-	&__content:not(.#{$is-default-content-class}) {
+	&__content:not(.#{$spoiler-active}) {
 		display: none;
 	}
 }
