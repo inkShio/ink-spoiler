@@ -53,36 +53,59 @@ export default class InkSpoiler {
 
 	events(el) {
 		el.addEventListener('click', () => {
-			const content = document.querySelector(el.dataset.spoilerTarget);
-
-			if (this.options.animation && content.classList.contains('animation')) return;
-
-			const isExpanded = el.dataset.spoilerState == 'hide' ? true : false;
-			const isGroup = el.getAttribute('data-spoiler-group');
-
-			el.dataset.spoilerState = isExpanded
-				? (el.dataset.spoilerState = 'show')
-				: (el.dataset.spoilerState = 'hide');
-
-			this.switchPanel(el);
-			this.switchText(el);
-
-			if (isGroup) {
-				document.querySelectorAll(`[data-spoiler-group='${isGroup}']`).forEach((group) => {
-					if (el.dataset.spoilerTarget !== group.dataset.spoilerTarget) {
-						const content = document.querySelector(group.dataset.spoilerTarget);
-
-						if (this.options.animation) {
-							this.slideUp(content, group);
-						} else {
-							group.dataset.spoilerState = 'hide';
-							content.classList.remove(this.options.classNames.contentActive);
-						}
-						if (this.options.a11y) group.setAttribute('aria-expanded', false);
-					}
-				});
+			if (el.dataset.spoilerState == 'hide') {
+				this.open(el);
+			} else {
+				this.close(el);
 			}
 		});
+	}
+
+	open(target = this.panel) {
+		const panel = typeof target === 'string'
+			? document.querySelector(target)
+			: target;
+
+		if (!panel || !panel.dataset.spoilerTarget || panel.dataset.spoilerState == 'show') return;
+
+		const content = document.querySelector(panel.dataset.spoilerTarget);
+		if (!content || (this.options.animation && content.classList.contains('animation'))) return;
+
+		panel.dataset.spoilerState = 'show';
+		this.switchPanel(panel);
+		this.switchText(panel);
+
+		const isGroup = panel.getAttribute('data-spoiler-group');
+		if (isGroup) {
+			document.querySelectorAll(`[data-spoiler-group='${isGroup}']`).forEach((group) => {
+				if (panel.dataset.spoilerTarget !== group.dataset.spoilerTarget) {
+					const groupContent = document.querySelector(group.dataset.spoilerTarget);
+
+					if (this.options.animation) {
+						this.slideUp(groupContent, group);
+					} else {
+						group.dataset.spoilerState = 'hide';
+						groupContent.classList.remove(this.options.classNames.contentActive);
+					}
+					if (this.options.a11y) group.setAttribute('aria-expanded', false);
+				}
+			});
+		}
+	}
+
+	close(target = this.panel) {
+		const panel = typeof target === 'string'
+			? document.querySelector(target)
+			: target;
+
+		if (!panel || !panel.dataset.spoilerTarget || panel.dataset.spoilerState == 'hide') return;
+
+		const content = document.querySelector(panel.dataset.spoilerTarget);
+		if (!content || (this.options.animation && content.classList.contains('animation'))) return;
+
+		panel.dataset.spoilerState = 'hide';
+		this.switchPanel(panel);
+		this.switchText(panel);
 	}
 
 	switchText(el, init) {

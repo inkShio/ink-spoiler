@@ -7,8 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>InkSpoiler demo</title>
 	<link rel="stylesheet" href="ink-spoiler.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
@@ -111,8 +110,7 @@
 				</code></pre>
 			</div>
 			<div class="ink-spoiler border-top border-end border-start">
-				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide"
-					data-spoiler-text="Закрыть 1">
+				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide" data-spoiler-text="Закрыть 1">
 					<strong>
 						<div class="ink-spoiler__text">Открыть 1</div>
 					</strong>
@@ -122,8 +120,7 @@
 				</div>
 			</div>
 			<div class="ink-spoiler border-top border-end border-start">
-				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="show"
-					data-spoiler-text="Закрыть 2">
+				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="show" data-spoiler-text="Закрыть 2">
 					<strong>
 						<div class="ink-spoiler__text">Открыть 2</div>
 					</strong>
@@ -152,8 +149,7 @@
 				</code></pre>
 			</div>
 			<div class="ink-spoiler border-top border-end border-start">
-				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide"
-					data-spoiler-target="#my-custom-id">
+				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler" data-spoiler-state="hide" data-spoiler-target="#my-custom-id">
 					<strong>
 						<div class="ink-spoiler__text">Спойлер</div>
 					</strong>
@@ -432,6 +428,123 @@
 		</div>
 
 		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Методы</h2>
+			<h3 class="mb-4">Открытие / Закрытие</h3>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilerMethod = new InkSpoiler('.js-spoiler-method');
+
+    document.querySelector('.js-method-open').addEventListener('click', function (event) {
+      spoilerMethod.open();
+    });
+
+    document.querySelector('.js-method-close').addEventListener('click', function (event) {
+      spoilerMethod.close();
+    });
+  });
+&lt;/script&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;js-method-open&quot;&gt;Открыть&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;js-method-close&quot;&gt;Закрыть&lt;/button&gt;
+
+&lt;div class=&quot;ink-spoiler&quot;&gt;
+  &lt;div class=&quot;ink-spoiler__panel js-spoiler-method&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;ink-spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ink-spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="mb-4">
+				<button type="button" class="btn btn-primary js-method-open">Открыть</button>
+				<button type="button" class="btn btn-danger js-method-close">Закрыть</button>
+			</div>
+			<div class="ink-spoiler border-top border-end border-start">
+				<div class="ink-spoiler__panel border-bottom p-4 js-spoiler-method" data-spoiler-state="hide">
+					<strong>
+						<div class="ink-spoiler__text">Спойлер</div>
+					</strong>
+				</div>
+				<div class="ink-spoiler__content border-bottom">
+					<div class="p-4">Контент</div>
+				</div>
+			</div>
+			<div class="border p-4 mb-4 mt-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const spoilerMethod2 = new InkSpoiler('.js-spoiler-method-2');
+    const spoilersMethod2Open = document.querySelectorAll('.js-method-open-2');
+    const spoilersMethod2Close = document.querySelectorAll('.js-method-close-2');
+
+    spoilersMethod2Open.forEach(el => {
+      el.addEventListener('click', function (event) {
+        const spoiler = document.querySelector(event.currentTarget.getAttribute('href'));
+        spoilerMethod2.open(spoiler);
+      });
+    });
+
+    spoilersMethod2Close.forEach(el => {
+      el.addEventListener('click', function (event) {
+        const spoiler = document.querySelector(event.currentTarget.getAttribute('href'));
+        spoilerMethod2.close(spoiler);
+      });
+    });
+  });
+&lt;/script&gt;
+
+&lt;a href=&quot;#spoilerMethod_1&quot; class=&quot;js-method-open-2&quot;&gt;Открыть спойлер 1&lt;/a&gt;
+&lt;a href=&quot;#spoilerMethod_1&quot; class=&quot;js-method-close-2&quot;&gt;Закрыть спойлер 2&lt;/a&gt;
+&lt;a href=&quot;#spoilerMethod_2&quot; class=&quot;js-method-open-2&quot;&gt;Открыть спойлер 2&lt;/a&gt;
+&lt;a href=&quot;#spoilerMethod_2&quot; class=&quot;js-method-close-2&quot;&gt;Закрыть спойлер 2&lt;/a&gt;
+
+&lt;div class=&quot;ink-spoiler&quot;&gt;
+  &lt;div id=&quot;spoilerMethod_1&quot; class=&quot;ink-spoiler__panel js-spoiler-method-2&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;ink-spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ink-spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;ink-spoiler&quot;&gt;
+  &lt;div id=&quot;spoilerMethod_2&quot; class=&quot;ink-spoiler__panel js-spoiler-method-2&quot; data-spoiler-state=&quot;hide&quot;&gt;
+    &lt;div class=&quot;ink-spoiler__text&quot;&gt;Спойлер&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ink-spoiler__content border-bottom&quot;&gt;Контент&lt;/div&gt;
+&lt;/div&gt;
+				</code></pre>
+			</div>
+			<div class="mb-4">
+				<a href="#spoilerMethod_1" class="btn btn-primary js-method-open-2">Открыть спойлер 1</a>
+				<a href="#spoilerMethod_1" class="btn btn-danger js-method-close-2">Закрыть спойлер 1</a>
+				<a href="#spoilerMethod_2" class="btn btn-primary js-method-open-2">Открыть спойлер 2</a>
+				<a href="#spoilerMethod_2" class="btn btn-danger js-method-close-2">Закрыть спойлер 2</a>
+			</div>
+			<div class="ink-spoiler border-top border-end border-start">
+				<div id="spoilerMethod_1" class="ink-spoiler__panel border-bottom p-4 js-spoiler-method-2" data-spoiler-state="hide">
+					<strong>
+						<div class="ink-spoiler__text">Спойлер 1</div>
+					</strong>
+				</div>
+				<div class="ink-spoiler__content border-bottom">
+					<div class="p-4">Контент 1</div>
+				</div>
+			</div>
+			<div class="ink-spoiler border-top border-end border-start">
+				<div id="spoilerMethod_2" class="ink-spoiler__panel border-bottom p-4 js-spoiler-method-2" data-spoiler-state="hide">
+					<strong>
+						<div class="ink-spoiler__text">Спойлер 2</div>
+					</strong>
+				</div>
+				<div class="ink-spoiler__content border-bottom">
+					<div class="p-4">Контент 2</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="border p-4 mb-4">
 			<h2 class="mb-4">Событие</h2>
 			<div class="border p-4 mb-4">
 				<pre class="my-0"><code>
@@ -485,6 +598,7 @@
 			</div>
 			<div id="changedTest" class="border p-4 mb-4" style="font-size: 10px; height: 150px; overflow: auto;"></div>
 		</div>
+
 	</div>
 	<script src="ink-spoiler.js"></script>
 	<script>
@@ -534,6 +648,32 @@
 					}
 					console.log('changeAfterClosing');
 				}
+			});
+		});
+
+		const spoilerMethod = new InkSpoiler('.js-spoiler-method');
+		document.querySelector('.js-method-open').addEventListener('click', function (event) {
+			spoilerMethod.open();
+		});
+		document.querySelector('.js-method-close').addEventListener('click', function (event) {
+			spoilerMethod.close();
+		});
+
+		const spoilerMethod2 = new InkSpoiler('.js-spoiler-method-2');
+		const spoilersMethod2Open = document.querySelectorAll('.js-method-open-2');
+		const spoilersMethod2Close = document.querySelectorAll('.js-method-close-2');
+
+		spoilersMethod2Open.forEach(el => {
+			el.addEventListener('click', (event) => {
+				const spoiler = document.querySelector(event.currentTarget.getAttribute('href'));
+				spoilerMethod2.open(spoiler);
+			});
+		});
+
+		spoilersMethod2Close.forEach(el => {
+			el.addEventListener('click', (event) => {
+				const spoiler = document.querySelector(event.currentTarget.getAttribute('href'));
+				spoilerMethod2.close(spoiler);
 			});
 		});
 	</script>

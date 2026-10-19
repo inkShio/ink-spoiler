@@ -78,6 +78,39 @@ const spoiler = new InkSpoiler('.js-spoiler', {
 });
 ```
 
+## Методы
+
+### Открытие
+Для открытия спойлера вызовите метод `open()`. Без аргументов будет открыт последний инициализированный спойлер экземпляра.
+Также можно передать DOM-элемент панели или её CSS-селектор:
+
+```js
+spoiler.open();
+spoiler.open('.js-spoiler');
+spoiler.open('#spoilerMethod_1');
+spoiler.open(document.querySelector('.js-spoiler'));
+
+const panel = document.querySelector(
+  '[data-spoiler-target="#myID"]'
+);
+spoiler.open(panel);
+```
+
+### Закрытие
+Для открытия спойлера вызовите метод `close()`. Без аргументов будет открыт последний инициализированный спойлер экземпляра.
+Также можно передать DOM-элемент панели или её CSS-селектор:
+```js
+spoiler.close();
+spoiler.close('.js-spoiler');
+spoiler.close('#spoilerMethod_1');
+spoiler.close(document.querySelector('.js-spoiler'));
+
+const panel = document.querySelector(
+  '[data-spoiler-target="#myID"]'
+);
+spoiler.open(panel);
+```
+
 ## Команды для сборки
 ```
 npm run build - продакшн

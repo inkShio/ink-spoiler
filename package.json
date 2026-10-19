@@ -1,6 +1,6 @@
 {
 	"name": "ink-spoiler",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "Simple JS Library for spoiler and accordion",
 	"main": "src/ink-spoiler.js",
 	"repository": {
